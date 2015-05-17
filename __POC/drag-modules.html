@@ -1,0 +1,448 @@
+<!doctype html>
+
+<!--[if lt IE 7 ]> <html lang="se" class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="se" class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="se" class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="se" class="   ie9"> <![endif]-->
+<!--[if IE 10 ]>   <html lang="se" class="   ie10"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="se"> <!--<![endif]-->
+
+<head>
+
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+ 	<title>Drag | Modules</title>
+
+	  <link rel="stylesheet" href="Library/Styles/styles.css">
+    
+    <!-- Modernizer - OTB: Recomended to do a custom download for each project "http://modernizr.com/download/" -->
+    <script src="Library/Scripts/libs/modernizr.custom.js"></script>
+
+    <script>
+    // For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
+/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark menu meter nav output progress section summary time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/
+
+var addEvent = (function () {
+  if (document.addEventListener) {
+    return function (el, type, fn) {
+      if (el && el.nodeName || el === window) {
+        el.addEventListener(type, fn, false);
+      } else if (el && el.length) {
+        for (var i = 0; i < el.length; i++) {
+          addEvent(el[i], type, fn);
+        }
+      }
+    };
+  } else {
+    return function (el, type, fn) {
+      if (el && el.nodeName || el === window) {
+        el.attachEvent('on' + type, function () { return fn.call(el, window.event); });
+      } else if (el && el.length) {
+        for (var i = 0; i < el.length; i++) {
+          addEvent(el[i], type, fn);
+        }
+      }
+    };
+  }
+})();
+
+(function () {
+
+var pre = document.createElement('pre');
+pre.id = "view-source"
+
+// private scope to avoid conflicts with demos
+addEvent(window, 'click', function (event) {
+  if (event.target.hash == '#view-source') {
+    // event.preventDefault();
+    if (!document.getElementById('view-source')) {
+      // pre.innerHTML = ('<!DOCTYPE html>\n<html>\n' + document.documentElement.innerHTML + '\n</html>').replace(/[<>]/g, function (m) { return {'<':'&lt;','>':'&gt;'}[m]});
+      var xhr = new XMLHttpRequest();
+
+      // original source - rather than rendered source
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          pre.innerHTML = this.responseText.replace(/[<>]/g, function (m) { return {'<':'&lt;','>':'&gt;'}[m]});
+          prettyPrint();
+        }
+      };
+
+      document.body.appendChild(pre);
+      // really need to be sync? - I like to think so
+      xhr.open("GET", window.location, true);
+      xhr.send();
+    }
+    document.body.className = 'view-source';
+    
+    var sourceTimer = setInterval(function () {
+      if (window.location.hash != '#view-source') {
+        clearInterval(sourceTimer);
+        document.body.className = '';
+      }
+    }, 200);
+  }
+});
+  
+})();
+
+
+</script>
+
+</head>
+
+<body class="prototype">
+
+<!-- ************************************************ -->
+<!-- ******************** HEADER ******************** -->
+<!-- ************************************************ -->
+
+  <header class="row bg-white" role="banner">
+      <div class="container no-break">
+
+          <div class="col-full">
+            <h1>Drag &amp; Drop - Modules</h1>
+          </div>
+
+      </div><!-- //conatiner -->  
+  </header><!-- //header-main -->
+
+<!-- ********************************************** -->
+<!-- ******************* SECTION ****************** -->
+<!-- ********************************************** -->
+	
+    <section class="row bg-white">
+
+        <div class="container">
+
+
+            <div class="col-2 drag-me">
+
+                <article class="module in-progress added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">A</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+
+            <div class="col-3 drag-me">
+
+                <article class="module in-progress added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">b</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+
+            <div class="col-4 drag-me">
+
+                <article class="module teaser-a added-module">
+                  <div class="body">
+                    <header>Header</header>
+                    <figure></figure>
+                    <a href="#" class="bth-v1">Link</a>            
+                  </div>
+                </article>
+
+            </div>
+
+
+        </div>
+        
+    </section><!-- //row-->
+
+
+
+<!-- ********************************************** -->
+<!-- ******************* SECTION ****************** -->
+<!-- ********************************************** -->
+  
+<div class="container">
+
+    <section class="row bg-white drag-me">
+      <section class="row added-row">
+
+      
+
+
+            <div class="col-half">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of2</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+
+            <div class="col-half">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of2</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+
+    
+      </section><!-- //row-->    
+    </section><!-- //row-->
+
+</div>
+
+<!-- ********************************************** -->
+<!-- ******************* SECTION ****************** -->
+<!-- ********************************************** -->
+  
+<div class="container">
+
+    <section class="row bg-white drag-me">
+      <section class="row added-row">
+
+    
+            <div class="col-4">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of3</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+
+            <div class="col-4">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of3</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+            <div class="col-4">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of3</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+           
+
+    
+      </section><!-- //row-->    
+    </section><!-- //row-->
+
+</div>
+
+
+
+<!-- ********************************************** -->
+<!-- ******************* SECTION ****************** -->
+<!-- ********************************************** -->
+  
+<div class="container">
+
+    <section class="row bg-white drag-me">
+      <section class="row added-row">
+
+    
+            <div class="col-4">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">2of3</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+            <div class="col-8">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">2of3</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+           
+      </section><!-- //row-->    
+    </section><!-- //row-->
+
+</div>
+
+
+
+<!-- ********************************************** -->
+<!-- ******************* SECTION ****************** -->
+<!-- ********************************************** -->
+  
+<div class="container">
+
+    <section class="row bg-white drag-me">
+      <section class="row added-row">
+
+    
+            <div class="col-8">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">2of3</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+            <div class="col-4">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of3</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+           
+      </section><!-- //row-->    
+    </section><!-- //row-->
+
+</div>
+
+<!-- ********************************************** -->
+<!-- ******************* SECTION ****************** -->
+<!-- ********************************************** -->
+  
+<div class="container">
+
+    <section class="row bg-white drag-me">
+      <section class="row added-row">
+
+    
+            <div class="col-3">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of4</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+
+            <div class="col-3">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of4</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+            <div class="col-3">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of4</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>
+
+            <div class="col-3">
+
+                <article class="module in-progress small added-module">
+                  <div class="body">
+                    <div class="header">
+                      <div class="big">1of4</div>
+                      Draggable
+                    </div>   
+                  </div>
+                </article>
+
+            </div>            
+    
+      </section><!-- //row-->    
+    </section><!-- //row-->
+
+</div>
+
+          
+<!-- ******************************************* -->
+<!-- *************** JAVASCRIPT **************** -->
+<!-- ******************************************* -->
+          
+  <!-- jQuery include 
+  <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>-->
+  <script src="Library/Scripts/libs/jquery-1.8.2.min.js"></script>
+  
+  <!-- Main -->
+  <script src="Library/Scripts/RAPID.DnD.js"></script>
+
+  <script>
+
+     RAPID.DnD.drag.init();
+    
+  </script>
+
+  
+</body>
+</html>

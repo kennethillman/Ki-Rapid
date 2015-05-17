@@ -1,4 +1,4 @@
 Ki-Rapid
 ========
 
-Rapid prototyping for Ki-Modular based on the HTML5 "Drag and drop" JavaScript API.
+Rapid prototyping for <a href="https://github.com/kennethillman/Ki-Modular">Ki-Modular</a> based on the HTML5 "Drag and drop" JavaScript API.

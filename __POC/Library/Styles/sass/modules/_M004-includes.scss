@@ -1,0 +1,178 @@
+
+
+
+// ******************************************************
+// __M004-includes - Table of contents
+// ******************************************************
+// 
+// - General
+// - - - Sublevel
+// - - - Touch (Normalization etc) 
+// - - - Internet explorer (fallback)
+// - - - No Javascript 
+//
+// - RWD
+// - - - 768
+// - - - 480
+// - - - 320
+//
+// ******************************************************
+
+
+.includes{
+
+// General
+
+	background:#fff;
+	min-height:100px;
+	position:relative;
+	overflow:hidden;
+
+// List 
+
+
+// Box
+
+	.box{
+
+		@include column(10);
+		@include push(1);
+
+		.body{
+		padding:20px;
+		border:1px solid #dadad3;
+		background:#f6f6ee;
+		margin:0 0 30px;
+		text-align:center;	
+
+			strong{
+				display:block;
+			}
+
+		}
+
+
+
+
+		ul{
+			display:block;
+			border:1px solid #dadad3;
+			padding:0;
+
+			li{
+
+				display:block;
+				padding:12px 30px 6px 18px;
+
+				&.header{
+					font-size:18px;
+					padding:20px 30px 20px 18px;
+				}
+
+				&:nth-child(odd){
+					background:#f6f6ee;
+				}	
+				
+			}
+
+		}
+
+	}
+
+
+
+
+// Link row
+
+	.link{
+
+		@include column(10);
+		@include push(1);
+		margin-bottom:20px;
+
+	}
+
+// TOUCH
+	.touch &{
+
+			.link
+			.link:hover{
+				text-decoration:none;
+			} // .link END
+
+			.link:active{
+				text-decoration:none;
+			} // link END
+				
+	} // .touch & END
+
+
+// INTERNET EXPLORER
+
+	.msie-8 &{
+				
+	} // .msie8 & END
+
+	.msie-9 &{
+				
+	} // .msie8 & END
+
+	.no-js &{
+				
+	} // .no-js & END
+	
+
+} // .includes END
+
+
+
+// ********************************************************
+// RWD - Gracefull degradation
+// ********************************************************
+
+// ****************************
+// Media 768
+// ****************************
+
+@media screen and (max-width: $media-768) {
+
+} // Media 768 END
+
+
+// ****************************
+// Media 480
+// ****************************
+
+@media screen and (max-width: $media-480) {
+
+	.includes{
+		.box{
+
+			@include column(12);
+			@include push(0);
+
+		}
+
+		.link{
+
+		@include column(12);
+		@include push(0);
+		margin-bottom:15px;
+
+	}
+	}	
+
+} // Media 480 END
+
+
+// ****************************
+// Media 320
+// ****************************
+
+@media screen and (max-width: $media-320) {
+
+
+} // Media 320 END
+
+
+

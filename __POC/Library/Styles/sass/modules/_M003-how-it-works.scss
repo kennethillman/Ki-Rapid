@@ -1,0 +1,108 @@
+
+
+
+// ******************************************************
+// __M003-how-it-works - Table of contents
+// ******************************************************
+// 
+// - General
+// - - - Sublevel
+// - - - Touch (Normalization etc) 
+// - - - Internet explorer (fallback)
+// - - - No Javascript 
+//
+// - RWD
+// - - - 768
+// - - - 480
+// - - - 320
+//
+// ******************************************************
+
+
+.how-it-works{
+
+// General
+
+	background:#eeeee7;
+	min-height:100px;
+	position:relative;
+	overflow:hidden;
+
+	.step{
+
+		@include column(12);
+
+		min-height:220px; // temp
+		background:#ddd; // temp
+		margin-bottom:30px; // temp
+
+	}
+
+
+// TOUCH
+	.touch &{
+
+			.link
+			.link:hover{
+				color:pink!important;
+			} // .link END
+
+			.link:active{
+				color:pink!important;
+			} // link END
+				
+	} // .touch & END
+
+
+// INTERNET EXPLORER
+
+	.msie-8 &{
+				
+	} // .msie8 & END
+
+	.msie-9 &{
+				
+	} // .msie8 & END
+
+	.no-js &{
+				
+	} // .no-js & END
+	
+
+} // .how-it-works END
+
+
+
+// ********************************************************
+// RWD - Gracefull degradation
+// ********************************************************
+
+// ****************************
+// Media 768
+// ****************************
+
+@media screen and (max-width: $media-768) {
+
+} // Media 768 END
+
+
+// ****************************
+// Media 480
+// ****************************
+
+@media screen and (max-width: $media-480) {
+
+} // Media 480 END
+
+
+// ****************************
+// Media 320
+// ****************************
+
+@media screen and (max-width: $media-320) {
+
+
+} // Media 320 END
+
+
+

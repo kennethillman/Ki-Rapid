@@ -1,0 +1,99 @@
+
+// ******************************************************
+// TYPOGRAPHY - Table of contents (_typography.scss)
+// ******************************************************
+//
+
+// - - BASE TYPOGRAPHY
+// - - HEADINGS
+// - - BODY TEXT
+
+// ******************************************************
+
+
+
+
+// ********************************************************
+// BASE TYPOGRAPHY
+// ********************************************************
+
+
+
+body {
+		font-family: Arial, Geneva, Verdana sans-serif;
+		line-height: 1.4; /* Unitless for proper inheritance */
+		color: #333;
+		-webkit-font-smoothing: subpixel-antialiased;
+	}
+
+	/* The top one is for IE: The percentage is of 16px (default IE text size)
+	   10px is 62.5%, 12px is 75%, 13px is 81.25%, and so forth).
+	   The second value is what all other browsers see (the wanted font size). */
+
+	body          		{font-size: 100%}	/* IE - OLD*/
+	html > body   		{font-size: 16px}	/* Other browsers */
+
+	
+// ********************************************************
+// HEADINGS
+// ********************************************************
+
+	h1,h2,h3,h4,h5,h6 	{font: bold 1em/1.256em Arial, Verdana, Arial,sans-serif; margin:0.6em 0 0.3em; color:#333;}
+	h1 a,h2 a,h3 a,
+	h4 a,h5 a,h6 a 		{text-decoration: none}
+
+	h1 					{font-size:28px;}
+	h2 					{font-size:26px;}
+	h3 					{font-size:18px;}
+	h4 					{font-size:16px}
+	h5 					{font-size:14px}
+	h6 					{font-size:12px}
+
+	hgroup {
+		text-align:center;
+		
+		color:#000;
+		
+		h2{
+			font-size:48px; 
+			text-transform:uppercase;
+			font-weight:normal;
+			margin:0;
+			padding:68px 30px 0;
+		}
+
+		h3{
+			font-size:23px; 
+			font-weight:normal;
+			color:#000;
+			margin:0;
+			padding:6px 30px 30px;
+		}
+
+	}
+
+
+
+
+
+// ********************************************************
+// BODY TEXT
+// ********************************************************
+
+p {
+	
+}
+
+p + p {
+	
+}
+
+i, em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+

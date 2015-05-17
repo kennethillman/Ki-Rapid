@@ -1,0 +1,70 @@
+
+// =========================================
+// MIXINS - Table of contents (_mixins.scss)
+// =========================================
+//
+
+// - - THIS IS IS IN PROGRESS
+// - - - All mixins need review
+
+// 
+// =========================================
+
+// BORDER RADIUS
+@mixin border-radius ( $value: 3px ) {
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+
+  // keeps background from busting out of border 
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+// OPACITY
+@mixin opacity ( $value: 0.5 ) {
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" $value * 100 ")";
+  filter: alpha(opacity= $value * 100 );
+  zoom: 1;
+}
+
+// BOX SHADOW
+@mixin box-shadow( $horiz : .5em , $vert : .5em , $blur : 0px , $spread : 0px , $color : #000000 ){
+  -webkit-box-shadow: $horiz $vert $blur $spread $color;
+  -moz-box-shadow: $horiz $vert $blur $spread $color;
+  box-shadow: $horiz $vert $blur $spread $color;
+}
+
+@mixin inset-box-shadow( $horiz : .5em , $vert : .5em , $blur : 0px , $spread : 0px , $color : #000000 ){
+  -webkit-box-shadow: inset $horiz $vert $blur $spread $color;
+  -moz-box-shadow: inset $horiz $vert $blur $spread $color;
+  box-shadow: inset $horiz $vert $blur $spread $color;
+}
+
+// TRANSITION
+@mixin transition($property, $duration:0.3s, $function: ease-out, $delay:0.3s,){
+   -moz-transition: $property $duration $function $delay;  /* FF3.7+ */
+   -o-transition: $property $duration $function $delay;  /* Opera 10.5 */
+    -webkit-transition: $property $duration $function $delay;  /* Saf3.2+, Chrome */
+  transition: $property $duration $function $delay; 
+}
+
+
+
+
+// CLEARFIX. Use: @extend .clearfix;
+.clearfix {
+    zoom:1;
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
+

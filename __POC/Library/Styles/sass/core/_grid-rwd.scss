@@ -1,0 +1,479 @@
+
+/////////////////////////
+/* Viking.gs * RWD */ 
+/////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////
+/* Variables */ 
+///////////////
+
+
+// Default variables for rwd grid
+$name 					: prototype!default;
+$prefix 				: grid !default;
+$width 					: 978 !default;
+$columns 				: 12 !default;
+$gutter 				: 30 !default;
+$outer-padding 			: 0 !default;
+$behavior 				: fluid;
+$min-width				: 290;
+$break480				: no;
+$ie7				    : yes;
+
+// Default variables for breaking rwd grid
+$breakpoint 			: 998; // // Variable insertion insted of value?
+$media 					: max; // Not implemneted
+ 
+// Default variables for extendend rwd grid
+$extended-prefix		: wide !default;
+$extended-width			: 1440 !default;
+$extended-outer-padding	: 0 !default;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////
+// Mixin - Grid - RWD //
+////////////////////////
+
+// -  		   ($name, $prefix, $width, $columns, $gutter, $outer-padding, $behavior, $min-width, $break480);
+@mixin grid-rwd($name, $prefix, $width, $columns, $gutter, $outer-padding, $behavior, $min-width, $break480, $ie7) {
+
+
+
+
+	.container{
+// * * * * * * Clear both rows and cols properly
+
+		@extend .clearfix;
+
+	  	
+// * * * * * * Base style and behavior setup
+
+			@if $behavior == "fluid" {												// Checking if fluid or not
+			    
+			    max-width:$width+px;																						
+			    width:100%;															
+			
+			} @else {
+			
+			  	max-width: $width+px;
+			  	width:$width+px;												
+			
+			}
+																						
+				min-width: $min-width+px; 											// Minimum width(recommended 300px)
+				margin:0 auto; 
+				padding:0 $outer-padding+px;
+
+	}	// .container END
+
+// * * * * * * Row clearing and adjustment for row in row 
+
+	  	.row{ 
+		@extend .clearfix;
+
+		
+			.row{ 
+				margin:0 (-$gutter*.5px);
+			}
+
+		} // .row END
+
+// * * * * * * Base styles for all columns
+		
+		[class *= col] { 
+			float:left; min-height:10px; display:block; padding: 0 $gutter * .5px;	
+		} 
+
+// * * * * * * Generate all columns	
+
+	@for $i from 1 through $columns {	
+  		.col-#{$i},
+  		.no-break .col-#{$i} 												
+	  	{
+	  		width: (100% / $columns) * $i;
+	  	}
+	} 
+
+// * * * * * * Full & Half columns
+
+	.col-full,
+	.no-break .col-full {width:100%;}
+	
+	.col-half,
+	.no-break .col-half {width:50%;}
+
+// * * * * * * Push
+
+	$push: $columns - 1;
+
+	@for $i from 1 through $push {
+  		.push-#{$i} 												
+	  	{margin-left: (100% / $columns) * $i;}
+	} 
+
+// * * * * * * Pull	
+
+	$pull: $columns - 1;
+
+	@for $i from 1 through $pull {
+  		.pull-#{$i} 												
+	  	{margin-right: (100% / $columns) * $i;}
+	} 
+
+// * * * * * * Maximize classes
+	
+	//.maximized-width,
+	//[class *= "maximized"]  			     {margin-left:$gutter*.5px; margin-right:$gutter*.5px;}
+	[class *= "maximized"] [class *= "col"]  {padding:0;}
+			
+	//.maximized-width 				     	 {margin-left:-(#{$outer-padding}px); margin-right:-(#{$outer-padding}px);}
+
+
+		
+	[class *= "maximized"] [class *= "module"] {
+		margin:0;
+	}
+
+	//.maximized-width [class *= "module"]{
+	//	margin: 0  0 #{$gutter}px; 						
+	//}
+
+	//.maximized-width [class *= "module"],
+	//.maximized-row  [class *= "module"]{ 
+	//	margin: 0  0 #{$gutter}px; 						
+	//}
+
+	// Maximized row
+	[class *= "maximized"].row{ 
+		margin: 0 $gutter*.5px #{$gutter}px; 						
+	}
+
+// * * * * * * Setting proper bottom margin for modules inside the grid for harmony
+	
+	// Module default
+	[class *= "module"] { 
+		margin: 0 0 1px ; 						
+	}		
+
+
+
+// * * * * * * Adding 480 breaking half classes or not
+
+@if $break480 == "yes" {
+
+	// Making automatic breakpoint at 480 for high cols 100% and low count cols 50%.
+	@include media-480{
+
+			// Columns > 1/2
+			$maximize: ceil($columns / 2) + 1;
+
+			@for $p from $maximize through $columns {
+	  			.col-#{$p} { width:100%;}
+			}
+
+			// Columns < 1/2
+			$collaps: ceil($columns / 2);
+
+			@for $i from 1 through $collaps {
+	  			.col-#{$i} { width:50%;}
+			}
+
+	  		[class *= "push"],
+			[class *= "pull"]{margin:0;}
+
+	}// include 480 END
+
+	// Breaking all columns at mobile portait width
+	@include media-320{
+	  	[class *= col] { width:100%;}
+	
+	} // include 320 END	
+
+} // if yes END
+
+@if $break480 == "no" {
+	  	
+	// Breaking all columns at mobile portait width
+	@include media-480{
+	  		[class *= "push"],
+			[class *= "pull"]{margin:0;}
+			[class *= col] { width:100%;}
+
+	} // include 320 END
+
+} // if no END
+
+
+
+// * * * * * * Break classes, for early breaking + push/pull.
+
+	@include media-1024{
+  			.break-1024 [class *= col] { width: 100%;}
+	} // include 768 END
+
+	@include media-768{
+  			.break-768 [class *= col] { width: 100%;}
+	} // include 768 END
+
+	@include media-480{
+  			.break-480 [class *= col],
+  			[class *= "push"],
+  			[class *= "pull"] { width: 100%;}
+	} // include 768 END
+
+
+} // grid mixin rwd END
+
+
+///////////////////////////
+// Mixin - Extend a grid //
+///////////////////////////
+                
+@mixin grid-extend($name,$prefix,$extended-prefix,$extended-width,$extended-outer-padding) {
+
+	.#{$extended-prefix}{
+
+	    	max-width:$extended-width+px;
+	    	width:100%;																																														
+			padding:0 $extended-outer-padding+px;
+
+
+			.maximized-row 	{
+				margin-left:-(#{$extended-outer-padding}px); 
+				margin-right:-(#{$extended-outer-padding}px);
+			}
+			
+
+	} // .name-prefix END
+
+
+
+} // grid-extend mixin END
+
+/////////////////////////////////////////
+// Mixin - Add a breakpoint adjustment //
+/////////////////////////////////////////
+
+@mixin grid-breakpoint($breakpoint, $name, $prefix, $media, $behavior, $width, $gutter, $outer-padding) {
+
+
+  @media (max-width: $breakpoint){
+
+  	.container{
+
+		@if $behavior == "fluid" {	
+
+	    	max-width: $width+px;												
+	    	width:100%;																
+	  	
+	  	} @else {
+	  	
+	  		max-width: none;
+	  		width:$width+px;													
+	  	
+	  	}
+																					
+			padding:0 $outer-padding+px;
+
+// * * * * * * Row clearing and adjustment for row in row (same grid)
+	
+	  	.row{ 
+		
+			.row{ 
+				margin:0 (-$gutter*.5px);
+			}
+
+		} // .row END
+
+// * * * * * * Base styles for all columns
+		
+		[class *= "col"] { 
+			padding: 0 $gutter*.5px;			// styles for all colums
+		} 
+
+	[class *= "maximized"] [class *= "col"]  {padding:0;}
+			
+		
+	[class *= "maximized"] [class *= "module"] {
+		margin:0;
+	}
+
+	//.maximized-width [class *= "module"]{
+	//	margin: 0  0 #{$gutter}px; 						
+	//}
+
+	//.maximized-width [class *= "module"],
+	//.maximized-row  [class *= "module"]{ 
+	//	margin: 0  0 #{$gutter}px; 						
+	//}
+
+	// Maximized row
+	[class *= "maximized"].row{ 
+		margin: 0 $gutter*.5px #{$gutter}px; 						
+	}
+
+// * * * * * * Setting proper bottom margin in grid, on modules inside the grid
+		
+		[class *= "module"] { 
+			margin: 0 0 $gutter+px; 			// setting the gutter as bottom margin
+		}
+
+	} // $name END
+
+
+  } // @media END
+
+
+} // grid-breakpoint mixin END
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+// Content Mixins for media queries, add more if needed, included in grid generation //
+///////////////////////////////////////////////////////////////////////////////////////
+
+@mixin media-1024 {
+  @media (max-width: $media-1024){
+    @content;
+  }
+}
+
+@mixin media-768 {
+  @media (max-width: $media-768){
+    @content;
+  }
+}
+
+@mixin media-480 {
+  @media (max-width: $media-480){
+    @content;
+  }
+}
+
+@mixin media-320 {
+  @media (max-width: $media-320){
+    @content;
+  }
+}
+
+
+////////////////////////////////////
+// Mixin - Semantic Row & Columns & Push & Pull //
+////////////////////////////////////
+
+// Row mixin needs testing!! 
+@mixin row() {
+	@extend .clearfix;
+}
+
+@mixin row-nested() {
+	@extend .clearfix;
+	margin:0 (-$gutter*.5px);
+}
+
+
+// Working with default grid values only!
+@mixin column($x) {
+	display: inline-block;
+	float: left;
+	width: (100% / $columns) * $x;
+	padding: 0 ($gutter*.5px);	
+}
+
+// Working with default grid values only!
+@mixin pull($x) {
+	margin-right: (100% / $columns) * $x;	
+}
+
+// Working with default grid values only!
+@mixin push($x) {
+	margin-left: (100% / $columns) * $x;	
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////
+/* Clearfix (extend) */
+///////////////////////
+
+.clearfix{
+	*zoom:1;
+
+	&:before,
+	&:after {
+	    content:"";
+	    display:table;
+	}
+	&:after {
+	    clear:both;
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////
+/* The grid */
+//////////////
+
+// @include grid-rwd   ($name, $prefix, $width, $columns, $gutter, $outer-padding, $behavior, $min-width, $break480, $ie7);
+   @include grid-rwd   ($name, $prefix, $width, $columns, $gutter, $outer-padding, fixed, $min-width, $break480, $ie7);
+
+// @include grid-breakpoint($breakpoint, $name, $prefix, $media, $behavior, $width, $gutter, $outer-padding);
+   @include grid-breakpoint($media-768, $name, $prefix, $media, fixed, 748 , 10, 10);
+   @include grid-breakpoint($media-480, $name, $prefix, $media, fluid, 460 , 10, 10);
+
+// @include grid-extend  ($name,$prefix,$extended-prefix,$extended-width,$extended-outer-padding); 
+   @include grid-extend  ($name,$prefix,$extended-prefix,$extended-width,$extended-outer-padding); 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////
+/* Full fluid exampel -  (Leave width in breakpoint open for full fluid)*/
+///////////////////////////
+
+   // @include grid-rwd   ($name, $prefix, $width, $columns, $gutter, $outer-padding, $behavior, $min-width, $break480, $ie7);
+   // @include grid-breakpoint($media-768, $name, $prefix, $media, fluid, $width , 10, 0);
+   // @include grid-breakpoint($media-480, $name, $prefix, $media, fluid, $width , 10, 0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

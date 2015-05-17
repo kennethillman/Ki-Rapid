@@ -1,0 +1,105 @@
+
+
+// =====================================================
+// FRAMEWORK GLOBAL- Table of contents (_framework.scss)
+// =====================================================
+//
+
+// - - THIS IS IS IN PROGRESS
+// - - - All need review
+
+// - Background-Color 
+//
+// - Header (Global)
+// - - Logo
+// - - Search
+//
+// - Footer (Global)
+//
+// - Prototype
+//
+// - - THIS NEED TO BE SETUP!!! 
+// 
+// - - RWD 768
+// - - RWD 480
+// - - RWD 320
+// 
+// =================================================
+
+
+// =================================================
+// Background-Color 
+// =================================================
+
+	body{
+		background:#ccc;
+	} // body END
+
+
+
+// =================================================
+// HEADER
+// =================================================
+
+	.header-global {
+		background:#000; height:60px;
+
+	    // - - Logo
+
+	    // - - Links
+
+	    // - - Button
+
+
+	} // .header-global END 
+
+
+// =================================================
+// FOOTER
+// =================================================
+
+	.footer-global {
+
+		.info{
+			min-height:150px;
+			background:#000;
+		} // .info END
+
+		.legal{
+			min-height:40px;
+			background:#fff;
+		} // .info END
+
+
+	} // .footer-global END
+
+
+// =================================================
+// Prototype
+// =================================================
+
+.prototype {
+
+	.bg-white	{background:#fff;}
+	.bg-gray	{background:rgb(238, 238, 231);}
+
+	.row.splash-demo	{
+		
+		.in-progress{
+		
+			.body{
+				height:350px;
+			}
+		}
+
+	}
+
+}
+
+/* #scrollMe{
+ height:200px;
+ overflow:auto;
+} */
+
+
+

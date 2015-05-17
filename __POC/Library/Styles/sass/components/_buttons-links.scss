@@ -1,0 +1,153 @@
+
+// =======================================================
+// Button & Links - Table of contents (_button-links.scss)
+// =======================================================
+//
+// - Links
+// - - a
+// - - - Link
+// - - - Hover
+// - - - Active
+// - - - Focus
+//
+// - Buttons
+// - - Button common styles
+// - - Version-1
+// - - - Default
+// - - - Hover
+// - - - Active
+// - - - Focus
+// - - - Disabled
+// - - - Touch normalize
+//
+// - - ETC.... orginize this according to need
+// 
+// - - RWD 768
+// - - RWD 480
+// - - RWD 320
+// 
+// =======================================
+
+
+// =================================================
+// LINKS
+// =================================================
+
+	a {
+		
+	//color:#8fc346;
+	text-decoration:none;
+
+		&:link{
+			
+		} 
+
+		&:hover{
+			text-decoration:underline;
+		} 
+
+		&:visited{
+			
+		} 
+
+		&:active{
+			
+		} 
+
+		&:focus{
+			
+		} 
+
+	} // a END
+
+
+
+// =================================================
+// BUTTONS
+// =================================================
+
+// - - Button common styles
+
+	[class *= "bth"] { 
+			line-height:1.12;	
+	} 
+
+
+	.bth-edit{
+		position:fixed;
+		bottom:12px;
+		right:12px;
+	}
+
+// - - Button - Version-1 - -
+
+	.bth-v1 {
+
+		@include border-radius(3px);
+		padding:6px 12px;
+		background:#1a1a1a;
+		color:#fff;
+		line-height:1;
+		font-size:12px;
+		
+	// Default
+	text-decoration:none;
+
+		&:hover{
+			text-decoration:none;
+			background:#000;
+		} 
+
+		&:visited{
+			
+		} 
+
+		&:active{
+			
+		} 
+
+		&:focus{
+			
+		}
+
+		&.disabled{
+			
+		}		 
+
+	    // Touch normalize (Hover + focus, Active, )
+		.touch & {
+			
+			text-decoration:none;
+
+				&:hover,
+				&:focus{
+					text-decoration:none;
+				} 
+
+				&:active{
+					text-decoration:none;
+				} 
+
+		} // .touch END	
+
+	} // .bth-v1 END
+
+		
+
+	.bth-arrow{
+
+		@include border-radius(60px);
+
+		position:absolute;
+		top:-30px;
+		left:50%;
+		margin: 0 0 0 -27px;
+		height:60px;
+		width:54px;
+		background:#333;
+
+		// MAKE IE 8 Image fallback, KI
+		
+	}
+
+

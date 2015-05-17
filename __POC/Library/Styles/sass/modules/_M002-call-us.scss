@@ -1,0 +1,141 @@
+
+
+
+// ******************************************************
+// __M002-call-us - Table of contents
+// ******************************************************
+// 
+// - General
+// - - - Sublevel
+// - - - Touch (Normalization etc) 
+// - - - Internet explorer (fallback)
+// - - - No Javascript 
+//
+// - RWD
+// - - - 768
+// - - - 480
+// - - - 320
+//
+// ******************************************************
+
+
+.call-us{
+
+// General
+
+	background:#fff;
+	min-height:100px;
+	position:relative;
+	padding: 0 0 170px;
+	overflow:hidden;
+
+
+// Puff
+	
+	.puff{
+
+		@include column(6);
+		
+
+		.body{
+		padding:20px;
+		border:1px solid #dadad3;
+		background:#f6f6ee;
+		margin:0 0 30px;	
+		}
+
+		strong{
+			font-size:20px;
+			line-height:1.1;
+			display:block;
+			padding:0 0 18px;
+		}
+
+	}
+
+
+
+// TOUCH
+	.touch &{
+
+			.link
+			.link:hover{
+				color:pink!important;
+			} // .link END
+
+			.link:active{
+				color:pink!important;
+			} // link END
+				
+	} // .touch & END
+
+
+// INTERNET EXPLORER
+
+	.msie-8 &{
+				
+	} // .msie8 & END
+
+	.msie-9 &{
+				
+	} // .msie8 & END
+
+	.no-js &{
+				
+	} // .no-js & END
+	
+
+} // .call-us END
+
+
+
+// ********************************************************
+// RWD - Gracefull degradation
+// ********************************************************
+
+// ****************************
+// Media 768
+// ****************************
+
+@media screen and (max-width: $media-768) {
+
+
+
+} // Media 768 END
+
+
+// ****************************
+// Media 480
+// ****************************
+
+@media screen and (max-width: $media-480) {
+
+
+	.call-us{
+		.puff{
+			@include column(12);
+			.body{
+				margin:0 0 15px;
+			}
+		}
+	}
+
+} // Media 480 END
+
+
+// ****************************
+// Media 320
+// ****************************
+
+@media screen and (max-width: $media-320) {
+
+	.call-us{
+		.puff{
+			padding:0 8px;
+		}
+	}
+
+} // Media 320 END
+
+
+

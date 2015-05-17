@@ -1,0 +1,145 @@
+
+
+
+// ******************************************************
+// __M005-the-service - Table of contents
+// ******************************************************
+// 
+// - General
+// - - - Sublevel
+// - - - Touch (Normalization etc) 
+// - - - Internet explorer (fallback)
+// - - - No Javascript 
+//
+// - RWD
+// - - - 768
+// - - - 480
+// - - - 320
+//
+// ******************************************************
+
+
+.the-service{
+
+// General
+
+	background:#eeeee7;
+	min-height:100px;
+	position:relative;
+	overflow:hidden;
+
+	.form{
+
+		@include column(8);
+		@include push(2);
+
+		margin-bottom:30px; // temp
+	}
+
+	.form-half{
+		@include column(6);
+	}
+
+
+	.form-zip{
+		@include row-nested();
+	}
+
+	.form-zip-small{
+		@include column(5);
+	}
+
+	.form-zip-big{
+		@include column(7);
+	}
+
+
+// TOUCH
+	.touch &{
+
+			.link
+			.link:hover{
+				color:pink!important;
+			} // .link END
+
+			.link:active{
+				color:pink!important;
+			} // link END
+				
+	} // .touch & END
+
+
+// INTERNET EXPLORER
+
+	.msie-8 &{
+				
+	} // .msie8 & END
+
+	.msie-9 &{
+				
+	} // .msie8 & END
+
+	.no-js &{
+				
+	} // .no-js & END
+	
+
+} // .the-service END
+
+
+
+// ********************************************************
+// RWD - Gracefull degradation
+// ********************************************************
+
+// ****************************
+// Media 768
+// ****************************
+
+@media screen and (max-width: $media-768) {
+
+} // Media 768 END
+
+
+// ****************************
+// Media 480
+// ****************************
+
+@media screen and (max-width: $media-480) {
+
+	.the-service{
+		.form{
+
+			@include column(9);
+			@include push(1);
+
+		}
+
+		.form-half{
+			@include column(12);
+		}
+
+	}
+
+} // Media 480 END
+
+
+// ****************************
+// Media 320
+// ****************************
+
+@media screen and (max-width: $media-320) {
+
+	.the-service{
+		.form{
+
+			@include column(12);
+			@include push(0);
+
+		}
+	}
+
+} // Media 320 END
+
+
+

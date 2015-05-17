@@ -1,0 +1,63 @@
+
+// =================================================
+// VARIABLES - Table of contents (_variables.scss)
+// =================================================
+
+// - Colors
+// - Font familys
+// - Media queries
+// - Paths 
+
+// =================================================
+
+
+// ----------------------------------------------------
+// Colors 
+// ---------------------------------------------------
+
+$link-default: #3b3b3b !default;
+$link-hover: #0181b0 !default;
+$link-click: #0181b0 !default;
+
+
+// ----------------------------------------------------
+// Font familys
+// ----------------------------------------------------
+
+// Gunplay
+$font-1: 'gunplay', Arial, sans-serif;
+
+// Cantrell
+$font-2: 'cantarell', Arial, sans-serif;
+
+
+// ----------------------------------------------------
+// Media queries (Need to uppadated in all places!!)
+// ----------------------------------------------------
+
+// Desaktop small - 1024px
+$media-1024: 1240px; // Need to be adjusted!!!
+
+// Tablet - Portrait
+$media-768: 994px; // Need to be adjusted!!!
+
+// Mobile - Landscape
+$media-480: 767px;
+
+// Mobile - Portrait
+$media-320: 479px;
+
+
+// ----------------------------------------------------
+// Paths for catalogs
+// ----------------------------------------------------
+
+// Image paths: 
+$imagepath: "/Images/";
+
+
+// Ex.
+// background: url('#{$imagepath}image-name.jpg') no-repeat;
+
+
+

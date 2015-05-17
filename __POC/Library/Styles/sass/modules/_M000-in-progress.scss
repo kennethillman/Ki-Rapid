@@ -1,0 +1,227 @@
+
+// ============================================================
+// IN PROGRESS - Table of contents (_M000-in-progress.scss)
+// ============================================================
+//
+// - - In progress
+// - - - - Default
+//
+// - - Touch (Normalization etc)
+// 
+// - - Internet explorer (fallback) 
+//
+// - - RWD
+// - - - - 768
+// - - - - 480
+// - - - - 320
+//
+// ============================================================
+
+
+.module.drop-area{
+
+		text-align:center;
+		background:#333;
+		height:180px;
+		width:100%;
+		padding:20px;
+		color:#fff;
+
+}
+
+.in-progress{
+
+// General styles
+	display:table;
+	width:100%;
+
+
+	&.drag-me:hover{
+		cursor:-moz-grab;
+		cursor:-webkit-grab;
+		cursor:grab;
+		 .big:after {
+  			content: ' (drag me)';
+		}
+	}
+
+	.over &{
+		opacity:.5;
+	}
+
+	.body{
+		display:table-cell;
+		vertical-align:middle;
+		text-align:center;
+		background:#333;
+		height:220px;
+		width:100%;
+
+	} // .body END
+
+	&.bg000 .body{
+		background:#000;
+	}
+
+	&.bg111 .body{
+		background:#111;
+	}
+
+	&.bg222 .body{
+		background:#222;
+	}
+
+	&.bg333 .body{
+		background:#333;
+	}
+
+	&.bg444 .body{
+		background:#444;
+	}
+
+	&.bg555 .body{
+		background:#555;
+	}
+
+	&.bg666 .body{
+		background:#666;
+	}
+
+	&.bg777 .body{
+		background:#777;
+	}
+
+	&.bg888 .body{
+		background:#888;
+	}
+
+	&.bg999 .body{
+		background:#999;
+	}
+
+	&.bgaaa .body{
+		background:#aaa;
+	}
+
+	&.bgbbb .body{
+		background:#bbb;
+	}
+
+	&.bgccc .body{
+		background:#ccc;
+	}
+
+	&.bgddd .body{
+		background:#ddd;
+	}
+
+	&.bgeee .body{
+		background:#eee;
+	}
+
+	&.bgfff .body{
+		background:#fff;
+	}
+
+	&.mini .body,
+	&.small .body{
+		height:60px;
+	}
+
+	&.large .body{
+		height:400px;
+	}
+
+	&.xl .body{
+		height:660px;
+	}
+
+	.header{
+		line-height:1.256;
+		font-size:10px;
+		font-family:arial,sans-serif;
+		text-transform:uppercase;
+		color:#ccc;
+		text-align:center;
+		margin:0;
+		
+		width:auto;
+		display:inline-block;
+
+
+		.big{
+			font-size:14px;
+			color:#fff;
+			display:block;
+		} // .big END
+
+	} // .header END
+
+	/*.header-global & {
+		margin-bottom:0px;
+		.body{
+			height:100px;
+		}
+	}
+
+	.footer-global & {
+		margin-bottom:0px;
+		.body{
+			height:300px;
+		}
+	} */
+
+
+// Touch normalize (Hover + focus, Active)
+
+	.touch & {		
+		text-decoration:none; // SAME as below	
+
+		& a:hover,
+		& a:focus{
+			
+			text-decoration:none; // SAME as above
+		} 
+
+		& a:active{
+			text-decoration:underline;
+		} 
+
+	} // .touch END	
+
+
+// Internet explorer (fallbacks)
+
+	.ie-8 &{
+				
+	}// .ie8 & END
+
+	.ie-9 &{
+				
+	}// .ie8 & END
+
+	
+} // .in-progress
+
+
+
+
+// =================================================
+// RWD - Gracefull degradation
+// =================================================
+
+@media screen and (max-width: $media-768) {
+
+} // Media 768 END
+
+@media screen and (max-width: $media-480) {
+
+} // Media 480 END
+
+@media screen and (max-width: $media-320) {
+
+} // Media 320 END
+
+
+
+

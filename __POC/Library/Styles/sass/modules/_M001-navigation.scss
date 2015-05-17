@@ -1,0 +1,462 @@
+
+
+
+// ******************************************************
+// __M001-Main-Naviagtion - Table of contents
+// ******************************************************
+// 
+// - BASE SETUP
+// - - Sub level setup
+//
+// - SHOW/HIDE SUB LEVEL
+// - - No-touch
+// - - Touch
+//
+// - STYLING - LINK / ICONS / MENY 
+//
+// - Touch (Normalization etc) ki ?? ?? ??
+// 
+// - INTERNET EXPLORER
+// - NO JAVASCRIPT 
+//
+// - RWD
+// - - - 768
+// - - - 480
+// - - - 320
+//
+// ******************************************************
+
+
+// Enter name of module here
+$module-name: main-navigation;
+
+
+.#{$module-name}{
+
+
+////////////////////////
+// *** BASE SETUP *** //
+////////////////////////
+
+	ul{
+		@extend .clearfix;
+		margin:0;
+		padding:0;
+
+		li{
+			list-style:none;
+			float:left;
+			position:relative;
+
+			&.sub{	
+
+				> ul{
+					left:0;
+
+					.sub{
+
+					 	ul{
+							left:100%;
+							top:0;
+						} // ul ul END
+
+					} // .sub END
+
+				} // > ul END
+
+				ul{
+					display:none;
+					position:absolute;
+					top:30px; 
+					left:0px;
+
+					li{
+						margin-left:0;
+						float:none;	
+
+					} // li END
+
+				} //ul END
+
+			} // &.sub END
+
+		} // li End
+
+	} // ul END
+
+
+//////////////////////////////////////////////////
+// *** SHOW -> SUB LEVEL - NO-TOUCH & TOUCH *** //
+//////////////////////////////////////////////////
+
+		
+		// No-touch
+		.no-touch &{
+			ul li.sub:hover > ul{
+				display:block;
+
+					li.sub:hover ul{
+						display:block;
+					} 
+
+			} 
+
+		} // no-touch END
+	
+		// Touch
+		.touch &{
+
+			ul li.sub.show > ul{
+				display:block;
+
+					li.sub.show ul{
+						display:block;
+					} 
+
+			} 
+
+		} // touch END
+ 
+
+///////////////////////////////////////////
+// *** STYLING - LINK / ICONS / MENY *** //
+///////////////////////////////////////////
+
+
+// - NO-TOUCH
+// - - A
+// - - A:hover
+// - - A.active
+// - - A.active:hover
+// - - A.sub
+// - - A.sub:hover 
+// - - A.first
+// - - A.last
+// - - - A
+// - - - A:hover
+// - - - A.active
+// - - - A.active:hover
+// - - - A.sub
+// - - - A.sub:hover
+// - - - A.first
+// - - - A.last
+
+// TOUCH 
+// - - A.show
+// - - A.sub.show
+// - - A.active
+// - - A.active.show
+// - - A.active.sub -> Arrow up!!
+// - - A.active.show.sub
+// - - - A.show
+// - - - A.sub.show
+// - - - A.active
+// - - - A.active.show
+// - - - A.active.sub
+// - - - A.active.show.sub
+
+
+	// Top level
+
+	ul li{
+
+			+ li {
+				margin-left:4px;
+			}
+
+	// - A - Top level
+
+			a{
+				display:block;
+				padding:8px 12px;
+				line-height:1;
+				font-size:14px;
+				background:#000;
+				color:#fff;
+
+				&:hover{
+					text-decoration:none;
+				}
+			}
+
+			
+			&:hover {
+
+				> a{
+					color:green;
+				}
+
+			}		
+
+	// SUB ICON - Setup - Top level
+			&.sub{
+
+				> a{
+					padding-right:32px;
+				}	
+
+				> span{
+					background:#666;
+					position:absolute;
+					top:50%;
+					right:6px;
+					width:20px;
+					height:20px;
+					margin-top:-10px;
+					display:block;
+					z-index:1;
+
+					&:before{
+						content:'u';
+						background:pink;
+						position:absolute;
+						top:0;
+						right:0;
+						width:20px;
+						height:20px;
+						z-index:-1;
+					}
+
+				}
+
+	// HOVER - Top level
+				&:hover {
+
+					> a{
+						color:green;
+					}
+
+					> span{
+						background:green;
+					}
+
+				} // &:hover END
+
+			} // &.sub END
+
+	// ACTIVE - Top level
+			&.active {
+
+				> a{ color:lime; }
+
+				&:hover{ 
+					> a{ color:lime; }
+				}
+
+
+				&.sub{
+
+					> span{
+						background:lime;						
+					}
+
+					a:hover{
+						cursor:pointer;
+					}
+
+				}
+
+
+			} // &.active END
+
+
+
+	// - - - Sub level A
+
+			ul li {
+
+				a{
+					background:#1a1a1a;
+				}
+
+				&:hover {
+					> a{
+						color:red;
+					}
+
+				} // &:hover END
+
+				// sub level 1 - hover
+				&.sub:hover {
+
+					> a{
+						color:red;
+					}
+
+					> span{
+						background:red;
+					}
+
+				} // &:hover END
+
+			}
+
+	// - - - Sub Sub level A
+
+			ul ul li {
+
+				a{
+					background:#2a2a2;
+				}
+
+				&:hover {
+					> a{
+						color:blue;
+					}
+
+				} // &:hover END
+
+				// sub level 1 - hover
+				&.sub:hover {
+
+					> a{
+						color:blue;
+					}
+
+					> span{
+						background:blue;
+					}
+
+				} // &:hover END
+
+			}
+
+
+	} // ul END
+
+
+///////////////////////////////
+// *** INTERNET EXPLORER *** //
+///////////////////////////////
+
+	.ie8 &{
+				
+	} // .msie8 & END
+
+	.ie9 &{
+				
+	} // .msie8 & END
+
+	.ie10 &{
+				
+	} // .msie8 & END
+
+///////////////////////////
+// *** NO JAVASCRIPT *** //
+///////////////////////////
+
+	.no-js &{
+		
+		ul{
+			@extend .clearfix;
+			margin:0;
+			padding:0;
+
+			li{
+				list-style:none;
+				float:left;
+				position:relative;
+
+				a{
+					display:block;
+					padding:8px 12px;
+					line-height:1;
+					font-size:14px;
+					background:#000;
+					color:#fff;
+				}
+
+				+ li {
+					margin-left:4px;
+				}
+
+				ul{
+					display:none;
+					position:absolute;
+					top:30px; 
+					left:0px;
+
+					li{
+						margin-left:0;
+						float:none;	
+					} 
+
+				} // ul END
+
+				&:hover{
+
+					> ul{
+						left:0;
+						display:block;
+
+						li:hover{
+
+						 	ul{
+								left:100%;
+								top:0;
+								display:block;
+							} 
+
+						} // &:hover &:hover END
+
+					} // > ul END
+
+				} // &:hover END
+
+			} // li End
+
+
+
+		} // ul END
+
+	} // .no-js & END
+	
+
+} // .main-navigation END
+
+
+
+// ********************************************************
+// RWD - Gracefull degradation
+// ********************************************************
+
+// ****************************
+// Media 768
+// ****************************
+
+@media screen and (max-width: $media-768) {
+
+	.#{$module-name}{
+
+	} // .#{$module-name} END
+
+} // Media 768 END
+
+
+// ****************************
+// Media 480
+// ****************************
+
+@media screen and (max-width: $media-480) {
+
+	.#{$module-name}{
+		
+	} // .#{$module-name} END
+
+} // Media 480 END
+
+
+// ****************************
+// Media 320
+// ****************************
+
+@media screen and (max-width: $media-320) {
+
+	.#{$module-name}{
+		
+	} // .#{$module-name} END
+
+} // Media 320 END
+
+
+
