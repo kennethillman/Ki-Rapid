@@ -40,6 +40,11 @@ console.log('rapid.init()');
 ///// RAPID - Inject ui
 /////////////////////////////////////////////////
 
+
+
+ // 1.  $.getScript('http://clients.ottoboni.se/Frontend/Rapid/_assets/rapid.init.js'); 
+
+
 // ** rapid.init (First steps)
 // ** ** ** Load files and setup
 //
@@ -62,6 +67,7 @@ console.log('rapid.init()');
   2.  window.RAPID.start();    or    window.RAPID.load(prefix);
 
 */
+
 
 
 
@@ -345,7 +351,9 @@ console.log('rapid.init()');
 
         toast(
                //'http://clients.ottoboni.se/Frontend/Rapid/_assets/rapid-ui.css', // Inc Modular  prefix--all.css
-               //'http://clients.ottoboni.se/Frontend/Rapid/_assets/jquery-2.1.3.min.js',
+               //'http://clients.ottoboni.se/Frontend/Rapid/_assets/jquery-1.8.2.min.js',
+               // SCOPE ERROR :::: 'http://clients.ottoboni.se/Frontend/__POC/Library/Styles/styles.css',
+
                'styles/rapid-ui.css', // Inc Modular  prefix--all.css
                'scripts/libs/jquery-1.8.2.min.js',
                 function () {
@@ -359,13 +367,13 @@ console.log('rapid.init()');
             );
 
         rapid.listen('rapid', function () {
-          console.log('rapid.step.load.resources.rapid.DnD()');
+         
             toast(
                     //'http://clients.ottoboni.se/Frontend/Rapid/_assets/rapid.DnD.js',
                     'scripts/rapid.DnD.js',
                     function () {
-                    
-                }
+                     console.log('rapid.step.load.resources.rapid.DnD()');
+                    }
                 );
         });
 
